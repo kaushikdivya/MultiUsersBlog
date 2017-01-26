@@ -1,0 +1,57 @@
+{% extends 'base_signedin.html' %}
+
+
+{% block header %}
+<div class="container">
+    <div class="jumbotron signup-header">
+        <h1>Take a peek what HOT's topic today. </h1>
+        <h3>See what others are thinking!</h3>
+    {% endblock %}
+    {% block content %}
+
+    <h2 class="text-center form-header">Blogs from around the world.</h2>
+    
+    {% for d in data %}
+        <div class="panel panel-default">
+            <div class="inline-text">
+                <div class="panel-heading">
+                    <div class="inline-like">
+                        <a class="blog-href" href='/blog/{{ d.key().id() }}'>
+                            <h3 class="panel-title">{{ d.subject }}</h3>
+                        </a>
+                        <span class="btn-group pull-right">
+                        {% if d.key().id() in  fav_blog_id_list %}
+                            {% set favstate = True %}
+                            <button type="button" class="btn btn-default btn-xs" onclick="favoriteBlog( '{{ d.key().id() }}', '{{ favstate }}')">
+                                <span id="heart-{{ d.key().id() }}" class="glyphicon glyphicon-heart red-heart" title="Click to Remove from your favorites" aria-hidden="true"></span>
+                            {% else %}
+                                {% set favstate = False %}
+                            <button type="button" class="btn btn-default btn-xs" onclick="favoriteBlog( '{{ d.key().id() }}', '{{ favstate }}')">
+                                <span id="heart-{{ d.key().id() }}" class="glyphicon glyphicon-heart" title="Click to Add to your favorites" aria-hidden="true"></span>
+                        {% endif %}
+                            </button>
+                            <button type="button" class="btn btn-default btn-xs" onclick="incrementLikes( '{{ d.key().id() }}' )">
+                                <span id="likes-{{ d.key().id() }}" class="glyphicon glyphicon-thumbs-up" title="Click to like" aria-hidden="true"> {{ d.likes_count or 0 }} </span>
+                            </button>
+                            <a class="blog-href" href="/blog/{{ d.key().id() }}/comments">
+                            <button type="button" class="btn btn-default btn-xs">
+                                <span class="glyphicon glyphicon-comment" aria-hidden="true"> {{ blog_id_comment_count.get(d.key().id(), None) }}</span>
+                            </button>
+                            </a>
+                        </span>
+                    </div>
+                    
+
+                </div>
+            </div>
+            <hr>
+            <div class="inline-text">
+                <div id="content-blog-{{ d.key().id() }}" class="panel-body content">{{ d.content.replace('\n', '<br>') | safe }}</div>
+                <span id="read-more-{{ d.key().id() }}" class="read-more" onclick="readmore('{{ d.key().id() }}')" data-text="Read less...">Read more...</span>
+                <h5 class="author pull-right">{{ d.created.strftime("%b %d, %Y") }} Author: {{ d.name.name }} </h5>
+            </div>
+        </div>
+        {% endfor %}
+
+</div>
+    {% endblock %}

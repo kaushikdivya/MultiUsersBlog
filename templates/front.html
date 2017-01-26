@@ -1,0 +1,12 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>User Post</title>
+    </head>
+    <body>
+        <h2>User Post</h2>
+        {% for a in all %}
+            {{ a.render() | safe }}
+        {% endfor %}
+    </body>
+</html>

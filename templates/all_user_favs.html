@@ -1,0 +1,52 @@
+{% extends 'base_signedin.html' %}
+
+
+{% block header %}
+<div class="container">
+    <div class="jumbotron signup-header">
+        <h1>Here are all your hand picked blogs </h1>
+        <h3>Read them, Love them or Remove them. It is just for you!</h3>
+
+    {% endblock %}
+    {% block content %}
+
+    <h2 class="text-center form-header">Your Favs</h2>
+    
+    {% for blog, likes_count, blog_comment_count in blog_info %}
+        <div class="panel panel-default">
+            <div class="inline-text">
+                <div class="panel-heading">
+                    <div class="inline-like">
+                        <a class="blog-href" href='/blog/{{ blog.key().id() }}'>
+                        <h3 class="panel-title subject">{{ blog.subject }}</h3></a>
+                        <span class="btn-group pull-right">
+                            <button type="button" class="btn btn-default btn-xs" data-toggle="tooltip" data-placement="bottom" onclick="favoriteBlog( '{{ blog.key().id() }}', '{{ fav_state }}')">
+                                <span id="heart-{{ blog.key().id() }}" class="glyphicon glyphicon-heart red-heart" title="Click to Remove from your favorites" aria-hidden="true"></span>
+                            </button>
+                            <button type="button" class="btn btn-default btn-xs" onclick="incrementLikes( '{{ blog.key().id() }}' )">
+                                <span id="likes-{{ blog.key().id() }}" class="glyphicon glyphicon-thumbs-up" title="Click to like" aria-hidden="true"> {{ likes_count }} </span>
+                            </button>
+                            <a class="blog-href" href="/blog/{{ blog.key().id() }}/comments">
+                            <button type="button" class="btn btn-default btn-xs">
+                                <span id="comment-{{ blog.key().id() }}" class="glyphicon glyphicon-comment comment" aria-hidden="true"> {{ blog_comment_count }}</span>
+                            </button>
+                            </a>
+                        </span>
+                    </div>
+                    <div class="created">
+                        
+                    </div>
+
+                </div>
+            </div>
+            <hr>
+            <div class="inline-text">
+                <div id="content-blog-{{ blog.key().id() }}" class="panel-body content">{{ blog.content.replace('\n', '<br>') | safe }}</div>
+                 <span id="read-more-{{ blog.key().id() }}" class="read-more" onclick="readmore('{{ blog.key().id() }}')" data-text="Read less...">Read more...</span>
+                <h5 class="author pull-right">{{ blog.created.strftime("%b %d, %Y") }} Author: {{ blog.name.name }}</h5>
+            </div>
+        </div>
+        {% endfor %}
+
+</div>
+    {% endblock %}

@@ -1,0 +1,34 @@
+{% extends 'base_signedin.html' %}
+
+
+{% block header %}
+    <div class="container">
+        <div class="jumbotron signup-header">
+            <h1>Hello {{ user.name }} !</h1>
+            <h3>Here is tutorial to guide you how to use this blog site. ★</h3>
+            <p>Very simple and easy to learn. Let's go!!
+    {% endblock %}
+
+    {% block content %}
+        {% if blog %}
+            {% set subject = blog.subject %}
+            {% set content = blog.content %}
+        {% endif %}
+        <form method="post">
+            <h2 class="text-center form-header">{{ post_title }}</h2>
+            <div class="form-group">
+                <label>Subject</label>
+                    <input type="text" name="subject" class="form-control" placeholder="Subject of the blog" value="{{ subject }}">
+            </div>
+            <div class="form-group">
+                <label>Blog</label>
+                <textarea name="content" class="form-control" rows="3" cols="80" placeholder="Pour out your heart and spirit">{{ content }}</textarea>
+            </div>
+            <div class="error">
+                {{ error }}
+            </div>
+            <button type="submit" class="btn btn-default">Submit</button>
+            <a class="btn btn-default cancel-btn" href="javascript:history.back(0);">Cancel</a>
+        </form>
+    </div>
+{% endblock %}

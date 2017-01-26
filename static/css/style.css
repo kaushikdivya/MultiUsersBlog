@@ -1,0 +1,146 @@
+body {
+    margin: auto;
+    font-family: Arial,sans-serif;;
+    font-size: 20px;
+    line-height: 18px;
+    background-color: #FDEEF4;
+
+}
+.signup-header{
+    background-color: #e0245e;
+    color: white;
+    text-align: center;
+}
+.text-center {
+    text-align: center;
+}
+
+.center-align {
+    width: 50%;
+    margin: auto;
+}
+
+.light-style {
+    font-weight: lighter;
+}
+
+.form-header {
+    color: seagreen;
+}
+
+.nav-margin {
+    margin-left: 5px;
+}
+.error {
+    color: red;
+}
+.inline-text {
+    display: inline;
+}
+
+.title {
+    margin-top: 20px;
+    text-align: center;
+    font-size: 24px;
+}
+
+.panel-body {
+    word-break:break-all;
+}
+
+hr {
+    border-width: 2px;
+    border-color: lightpink;
+}
+.blog {
+    font-size: 14px;
+    margin-bottom: 10px;
+}
+
+hr {
+    margin-top: 0;
+}
+.panel-heading h3 {
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    line-height: normal;
+    width: 75%;
+    padding-top: 8px;
+}
+
+.created {
+    margin-top: 0;
+    color:  #999;
+    font-size: 14px;
+    font-weight: normal;
+    margin-right: 5px;
+}
+
+.red-heart {
+    color: red;
+}
+
+.cancel-btn {
+    text-decoration: none !important;
+}
+
+.edit-btn {
+    text-decoration: none !important;
+}
+
+.author {
+    margin-top: 0;
+    color:  #999;
+    font-size: 12px;
+    font-weight: normal;
+    margin-right: 10px;
+    padding-top: 5px;
+    margin-bottom: 0;
+}
+
+.content {
+    display: none;
+}
+
+.read-more {
+    font-size: 14px;
+    color: deeppink;
+    cursor: pointer;
+    margin-left: 10px;
+}
+
+.read-more:hover{
+    color: deepskyblue;
+}
+
+
+.blog-href {
+    text-decoration: None !important;
+}
+
+.go {
+    color: green;
+}
+
+.cancel {
+    color: red;
+}
+.error-msg {
+    color: red;
+}
+
+.comment-text {
+    font-size: 14px;
+}
+a.blog-href {
+    color: cadetblue;
+}
+
+a.blog-href:hover {
+    color: cadetblue;
+}
+
+a.blog-href:visited {
+    color: cadetblue;
+}

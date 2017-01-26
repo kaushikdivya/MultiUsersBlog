@@ -1,0 +1,33 @@
+{% extends 'base_signedin.html' %}
+
+{% block header %}
+<div class="container">
+    <div class="jumbotron signup-header">
+        <h2>Latest comments on the blog</h2>
+    {% endblock %}
+    {% block content %}
+        <div class="container">
+            <a class="blog-href" href="/blog/{{ blog.key().id() }}">
+            <div class="panel panel-default">
+                <div class="panel-heading">
+                    <h3 class="subject">{{ blog.subject }}</h3>
+                </div>
+            </div></a>
+            <div class="comment-container">
+                <h4 class="comment-text">Comments <strong class="red-heart">💜</strong></h4>
+                {% for c in blog_comments %}
+                    <div class="panel panel-default">
+                        <div class="panel-body">
+                            {% if c.user.key().id() == user.key().id() %}
+                                <div id="comment-{{ c.key().id() }}" class="comment-text" contenteditable="true" data-comment-id="{{ c.key().id() }}" data-blog-id="{{ c.key().id() }}" data-original="{{ c.comment }}">{{ c.comment }}</div>
+                            {% else %}
+                                <div id="comment-{{ c.key().id() }}" class="comment-text">{{ c.comment }}</div>
+                            {% endif %}
+                            <h5 class="author">{{ c.created_time.strftime("%b %d, %Y") }} Author: {{ c.user.name }}</h5>                                     
+                        </div>
+                    </div>
+                {% endfor %}
+            </div>
+        </div>
+
+{% endblock %}

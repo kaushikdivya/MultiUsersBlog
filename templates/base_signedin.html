@@ -1,0 +1,19 @@
+{% extends 'base.html' %}
+
+{% block main %}
+    {% block header %}
+    {% endblock %}
+    <p><a class="btn btn-primary btn-lg" href="/blog/newpost" role="button">New Post</a></p>
+    <ul class="nav nav-tabs nav-justified">
+        <li role="presentation"><a role="button" class="btn btn-default nav-margin" href="/blog">ALL POSTS</a></li>
+        <li role="presentation"><a role="button" class="btn btn-default nav-margin" href="/see_your_posts">SEE YOUR POSTS</a></li>
+        <li role="presentation"><a role="button" class="btn btn-default nav-margin" href="/all_fav_posts">ALL YOUR FAVS ♥</a></li>
+        <li role="presentation"><a role="button" class="btn btn-default nav-margin" href="/blog/newpost">NEW POST</a></li>
+        <li role="presentation"><a role="button" class="btn btn-default nav-margin" href="/logout">LOGOUT</a></li>
+    </ul>
+    </div>
+    {% block content %}
+    {% endblock %}
+{% endblock %}
+
+        
