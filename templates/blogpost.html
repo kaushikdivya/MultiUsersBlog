@@ -22,13 +22,13 @@
             </div>
             <div class="form-group">
                 <label>Blog</label>
-                <textarea name="content" class="form-control" rows="3" cols="80" placeholder="Pour out your heart and spirit">{{ content }}</textarea>
+                <textarea name="content" class="form-control" rows="3" cols="80" placeholder="Pour out your heart and spirit">{{ content | safe }}</textarea>
             </div>
             <div class="error">
                 {{ error }}
             </div>
             <button type="submit" class="btn btn-default">Submit</button>
-            <a class="btn btn-default cancel-btn" href="javascript:history.back(0);">Cancel</a>
+            <a class="btn btn-default cancel-btn" href="javascript:history.back();">Cancel</a>
         </form>
     </div>
 {% endblock %}

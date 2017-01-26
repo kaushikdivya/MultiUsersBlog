@@ -500,9 +500,11 @@ class SeeYourPosts(Handler):
 
 
 class UserBlogComment(Handler):
+    """Handler for blog comments"""
 
     @authenticated
     def get(self, blog_id):
+        """Renders all comments for the blog"""
         user = self.request.user
         blog = Blog.get_by_id(int(blog_id))
         blog_comments = UserComment.all().filter('blog =', blog).order('created_time')
@@ -511,6 +513,7 @@ class UserBlogComment(Handler):
 
     @authenticated
     def delete(self, blog_id):
+        """Deletes comments if user logged in and comment user are same"""
         blog = Blog.get_by_id(int(blog_id))
         logging.info("I am in UserBlogComment delete method")
         if blog:
@@ -539,6 +542,7 @@ class UserBlogComment(Handler):
 
     @authenticated
     def put(self, blog_id):
+        """Provides edit fucntionality for comments"""
         blog = Blog.get_by_id(int(blog_id))
         comment_id = self.request.get('comment_id', None)
         logging.info("blog= %s, comment_id=%s, blog_id=%s", blog, comment_id, blog_id)
